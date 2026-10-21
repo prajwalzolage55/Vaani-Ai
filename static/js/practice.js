@@ -82,7 +82,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     renderItemOptions();
     if (filteredItems.length > 0) {
-      selectItem(0);
+      // Support preselection from Varṇamālā inspector (?symbol= or ?item_id=)
+      const urlParams = new URLSearchParams(window.location.search);
+      const symbolParam = urlParams.get("symbol");
+      const itemIdParam = urlParams.get("item_id");
+      let targetIdx = 0;
+      if (symbolParam) {
+        const found = filteredItems.findIndex(it => 
+          it.text.includes(symbolParam) || 
+          (it.phonetic_details && it.phonetic_details.some(p => p.symbol === symbolParam))
+        );
+        if (found !== -1) targetIdx = found;
+      } else if (itemIdParam) {
+        const found = filteredItems.findIndex(it => it._id === itemIdParam);
+        if (found !== -1) targetIdx = found;
+      }
+      selectItem(targetIdx);
     }
   }
 

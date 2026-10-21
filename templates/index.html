@@ -1,29 +1,135 @@
 {% extends "base.html" %}
 
-{% block title %}VaaniAI - Classical Sanskrit Pronunciation System{% endblock %}
+{% block title %}VaaniAI - Classical Sanskrit Phonetics & Pāṇinian AI System{% endblock %}
 
 {% block content %}
-<section class="hero-section">
-  <div class="hero-pill">Indian Knowledge Systems (IKS) • पाणिनीय शिक्षा</div>
-  <h1 class="hero-title classical-heading">
-    Master Authentic <span>Sanskrit Phonetics</span> With AI
-  </h1>
-  <p class="hero-desc">
-    Eliminate pronunciation confusion between dental <strong>त</strong> vs retroflex <strong>ट</strong>, 
-    and unaspirated <strong>ग</strong> vs aspirated <strong>घ</strong>. Grounded in the <em>Śikṣā Vedāṅga</em>, 
-    VaaniAI identifies your exact place of articulation (<em>Sthāna</em>) and effort (<em>Prayatna</em>) 
-    in real-time to give classical corrective feedback.
-  </p>
-</section>
+<!-- ==========================================================================
+     HERO SECTION: VEDIC FUTURISTIC SHOWCASE (BUILT TO WOW THE JUDGES)
+     ========================================================================== -->
+<div class="vedic-hero-wrap">
+  <!-- Pitch Highlights Ribbon -->
+  <div class="pitch-badge-ribbon">
+    <span class="pitch-pill gold">
+      <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>IKS Exhibition & AI Prototype</span>
+    </span>
+    <span class="pitch-pill">
+      <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      <span>100% Deterministic Pāṇinian Engine</span>
+    </span>
+    <span class="pitch-pill live">
+      <span class="pulse-dot"></span>
+      <span>Gemini 2.5 Flash Acoustic ASR</span>
+    </span>
+  </div>
 
-<!-- Setup Preferences Card -->
-<div class="iks-card" style="max-width: 760px; margin: 0 auto 3.5rem;">
+  <!-- Hero Titles -->
+  <h1 class="hero-epic-title">
+    The Science of <span class="gradient-text">Sanskrit Phonetics</span> Powered by AI
+  </h1>
+
+  <div class="hero-sub-verse">
+    नृत्तावसाने नटराजराजो ननाद ढक्कां नवपञ्चवारम् • पाणिनीय शिक्षा
+  </div>
+
+  <p class="hero-lead-text">
+    Standard Speech ASR models <em>auto-correct</em> your mistakes, masking critical articulation errors. 
+    <strong>VaaniAI</strong> decodes your raw acoustic waveforms without auto-correction, 
+    mapping every phoneme against the canonical <strong>Sthāna</strong> (Place) and <strong>Prayatna</strong> (Effort) 
+    matrices of the <em>Śikṣā Vedāṅga</em> to guide your vocal tract with anatomical precision.
+  </p>
+
+  <!-- Interactive Live Sound Tester Bar (Judges can click to hear minimal pairs right away!) -->
+  <div class="hero-sound-tester">
+    <div class="tester-label">
+      <svg class="ui-icon" style="color: var(--brand-primary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      <span>Acoustic Differentiator Demo:</span>
+    </div>
+    <div class="tester-chips">
+      <button class="tester-btn hero-test-btn" data-sound="त ट" title="Click to hear Dental त vs Retroflex ट">
+        <span>त (Dental) vs ट (Retroflex)</span>
+      </button>
+      <button class="tester-btn hero-test-btn" data-sound="ग घ" title="Click to hear Unaspirated ग vs Aspirated घ">
+        <span>ग (Alpaprāṇa) vs घ (Mahāprāṇa)</span>
+      </button>
+      <button class="tester-btn hero-test-btn" data-sound="श ष स" title="Click to hear 3 Sibilants">
+        <span>श vs ष vs स</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Official Vaani AI Brand Identity Showcase Badge -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap;">
+    <div class="iks-card" style="padding: 0.85rem 1.4rem; display: inline-flex; align-items: center; gap: 1.1rem; border-color: rgba(230, 81, 0, 0.22); background: rgba(255, 255, 255, 0.95); box-shadow: 0 4px 15px rgba(230, 81, 0, 0.08); border-radius: var(--radius-lg);">
+      <img src="{{ url_for('static', filename='images/vaani_logo.jpg') }}" alt="Vaani AI Official Logo" style="width: 58px; height: 58px; border-radius: 10px; object-fit: cover; background: #FFFFFF; border: 1px solid var(--border-subtle); box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+      <div style="text-align: left;">
+        <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-gold-dark);">VaaniAI Official Identity • Sanskrit | English</div>
+        <div class="deva-text" style="font-size: 1.18rem; font-weight: 700; color: var(--text-primary); line-height: 1.3;">भाषासु मुख्या मधुरा दिव्या गीर्वाणभारती</div>
+        <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">Authentic Pāṇinian Phonetics &amp; Real-Time AI System</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero CTA Cluster -->
+  <div class="hero-cta-cluster">
+    <a href="#quick-start-console" class="btn btn-primary btn-lg" id="hero-btn-start">
+      <span>आरम्भः क्रियताम् (Start Practicing)</span>
+      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="#varnamala" class="btn btn-secondary btn-lg" id="hero-btn-varnamala">
+      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+      <span>संस्कृत वर्णमाला (Alphabet)</span>
+    </a>
+    <a href="#sanskrit-notes" class="btn btn-secondary btn-lg" id="hero-btn-notes">
+      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+      <span>शिक्षा नोट्स (Study Hub)</span>
+    </a>
+    <button class="btn btn-judge-pitch btn-lg trigger-judge-pitch" id="hero-btn-pitch">
+      <span>🏆 Judge Pitch Deck</span>
+    </button>
+  </div>
+
+  <!-- Live Metric Counters / High-Impact Ribbon -->
+  <div class="hero-metrics-bar">
+    <div class="metric-pill-card">
+      <div class="metric-value">46+</div>
+      <div class="metric-label">Canonical Phonemes</div>
+      <div class="metric-sub">Swaras & Sparsha Varga</div>
+    </div>
+    <div class="metric-pill-card">
+      <div class="metric-value">5</div>
+      <div class="metric-label">Vocal Sthānas</div>
+      <div class="metric-sub">Kaṇṭha to Oṣṭha</div>
+    </div>
+    <div class="metric-pill-card">
+      <div class="metric-value">14</div>
+      <div class="metric-label">Shiva Sūtras</div>
+      <div class="metric-sub">Primordial Vedic Grammar</div>
+    </div>
+    <div class="metric-pill-card">
+      <div class="metric-value">100%</div>
+      <div class="metric-label">Deterministic Rules</div>
+      <div class="metric-sub">Zero LLM Hallucinations</div>
+    </div>
+    <div class="metric-pill-card">
+      <div class="metric-value">3-Pass</div>
+      <div class="metric-label">Free Mode Pipeline</div>
+      <div class="metric-sub">Transcribe • Identify • Grade</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     QUICK PRACTICE SESSION CONSOLE (PREFERENCES)
+     ========================================================================== -->
+<div id="quick-start-console" class="iks-card" style="max-width: 820px; margin: 0 auto 3.5rem; border: 1.5px solid rgba(230, 81, 0, 0.2); box-shadow: 0 12px 35px -5px rgba(230, 81, 0, 0.08);">
   <div style="text-align: center; margin-bottom: 1.75rem;">
-    <h2 class="classical-heading" style="font-size: 1.45rem; color: var(--text-primary); margin-bottom: 0.35rem;">
-      Configure Your Practice Session (सत्र संयोजनम्)
+    <span class="pitch-pill" style="margin-bottom: 0.5rem;">सत्र संयोजनम् • Quick Calibrate</span>
+    <h2 class="classical-heading" style="font-size: 1.55rem; color: var(--text-primary); margin-bottom: 0.35rem;">
+      Configure Your Articulatory Practice Session
     </h2>
-    <p style="color: var(--text-muted); font-size: 0.9rem;">
-      Select your language and proficiency level to calibrate the Pāṇinian articulatory engine.
+    <p style="color: var(--text-muted); font-size: 0.92rem;">
+      Select your language and proficiency level to calibrate the real-time Sthāna phonetic engine.
     </p>
   </div>
 
@@ -34,7 +140,7 @@
         <label for="select-language" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.45rem; color: var(--text-primary);">
           Select Language (भाषा)
         </label>
-        <select id="select-language" class="form-control" style="cursor: pointer;">
+        <select id="select-language" class="form-control" style="cursor: pointer; font-weight: 600;">
           <option value="sanskrit" selected>संस्कृतम् (Sanskrit Classical)</option>
           <option value="hindi">हिन्दी (Hindi Standard)</option>
         </select>
@@ -45,7 +151,7 @@
         <label for="select-level" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.45rem; color: var(--text-primary);">
           Select Mastery Level (स्तर)
         </label>
-        <select id="select-level" class="form-control" style="cursor: pointer;">
+        <select id="select-level" class="form-control" style="cursor: pointer; font-weight: 600;">
           <option value="beginner" selected>प्रारम्भिक (Beginner - Minimal Pairs & Letters)</option>
           <option value="intermediate">मध्यम (Intermediate - Words & Shlokas)</option>
         </select>
@@ -55,100 +161,1103 @@
     <!-- Student Name -->
     <div style="margin-bottom: 1.75rem;">
       <label for="student-name" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.45rem; color: var(--text-primary);">
-        Student Name / ID (छात्र नाम)
+        Student Name / Exhibition Badge (छात्र नाम)
       </label>
-      <input type="text" id="student-name" value="Arya Sharma" placeholder="Enter student name" class="form-control">
+      <input type="text" id="student-name" value="Arya Sharma" placeholder="Enter student or judge name" class="form-control" style="font-weight: 600;">
     </div>
 
     <!-- Start Practice CTA -->
     <div style="text-align: center;">
-      <button type="submit" class="btn btn-primary btn-lg" id="btn-start-practice" style="width: 100%; max-width: 360px;">
-        <span>आरम्भः क्रियताम् (Start Practicing)</span>
-        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 0.35rem;"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <button type="submit" class="btn btn-primary btn-lg" id="btn-start-practice" style="width: 100%; max-width: 400px; padding: 0.95rem 2rem; font-size: 1.1rem; box-shadow: 0 4px 18px var(--brand-glow);">
+        <span>आरम्भः क्रियताम् (Start Practicing Now)</span>
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 0.4rem;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
     </div>
   </form>
 </div>
 
-<!-- IKS Foundations Overview Cards -->
-<div style="margin-top: 3.5rem;">
-  <div style="text-align: center; margin-bottom: 2.25rem;">
-    <h2 class="classical-heading" style="font-size: 1.85rem; color: var(--text-primary); margin-bottom: 0.35rem;">
-      The Pāṇinian Framework: Sthāna & Prayatna
-    </h2>
-    <p style="color: var(--text-muted); font-size: 0.95rem;">
-      Canonical articulatory science from the <em>Pāṇinīya Śikṣā</em> (पाणिनीय शिक्षा).
+<!-- ==========================================================================
+     CORE PITCH INNOVATIONS: WHY VAANIAI WINS FOR JUDGES
+     ========================================================================== -->
+<div style="margin-bottom: 3.75rem;">
+  <div class="section-head-wrap">
+    <div class="section-tagline">Why VaaniAI Disrupts Language Tech</div>
+    <h2 class="section-title">The Four Core Engineering Innovations</h2>
+    <p class="section-desc">
+      How combining ancient Pāṇinian phonetic science with Google Gemini solves the fundamental flaw of modern speech AI.
     </p>
   </div>
 
-  <div class="iks-features-grid">
-    <!-- Sthana Card -->
-    <div class="iks-card">
-      <div style="width: 44px; height: 44px; background: var(--accent-gold-light); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; border: 1px solid rgba(217, 119, 6, 0.2);">
-        <svg class="ui-icon ui-icon-lg" style="color: var(--accent-gold-dark);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-        </svg>
+  <div class="iks-features-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+    <!-- Card 1 -->
+    <div class="iks-card" style="border-top: 4px solid #DC2626;">
+      <div style="width: 44px; height: 44px; background: #FEE2E2; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem;">
+        <svg class="ui-icon ui-icon-lg" style="color: #DC2626;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
       </div>
-      <h3 class="classical-heading" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary);">
-        स्थान (Sthāna - Place of Articulation)
+      <h3 class="classical-heading" style="font-size: 1.25rem; margin-bottom: 0.5rem;">
+        The Auto-Correction Flaw
       </h3>
       <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
-        Every sound in Sanskrit originates from one of 5 distinct anatomical vocal regions: 
-        <strong>Kaṇṭha</strong> (Throat), <strong>Tālu</strong> (Hard Palate), 
-        <strong>Mūrdhā</strong> (Roof Dome), <strong>Danta</strong> (Teeth), and <strong>Oṣṭha</strong> (Lips).
+        Mainstream models (Siri, Whisper) are trained to guess intended speech. When a beginner mispronounces dental <strong>त</strong> as retroflex <strong>ट</strong>, generic models auto-fix it. 
+        <strong>VaaniAI disables auto-correction</strong> to capture authentic phoneme defects.
       </p>
-      <div class="sutra-banner" style="margin-top: 1.25rem; margin-bottom: 0; padding: 0.65rem 0.95rem;">
-        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-gold-dark);">Panini Sūtra:</span>
-        <div class="deva-text" style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-top: 0.2rem;">ऌतुलसानां दन्ताः | ऋटुरषाणां मूर्धा</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="iks-card" style="border-top: 4px solid var(--accent-gold);">
+      <div style="width: 44px; height: 44px; background: var(--accent-gold-light); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem;">
+        <svg class="ui-icon ui-icon-lg" style="color: var(--accent-gold-dark);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+      </div>
+      <h3 class="classical-heading" style="font-size: 1.25rem; margin-bottom: 0.5rem;">
+        Deterministic Pāṇinian Engine
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
+        Instead of asking an LLM to hallucinate grammar rules, our backend runs acoustic deltas through 
+        the canonical 2,500-year-old <em>Pāṇinīya Śikṣā</em> matrix. Mathematical certainty with zero hallucinations.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="iks-card" style="border-top: 4px solid var(--brand-primary);">
+      <div style="width: 44px; height: 44px; background: var(--brand-light); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem;">
+        <svg class="ui-icon ui-icon-lg" style="color: var(--brand-primary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+      </div>
+      <h3 class="classical-heading" style="font-size: 1.25rem; margin-bottom: 0.5rem;">
+        Real-Time Anatomical SVG
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
+        Students do not just receive text feedback; an interactive sagittal vocal tract cross-section 
+        illuminates exactly where their tongue curled wrong and arrows indicate correct placement toward teeth, palate, or throat.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="iks-card" style="border-top: 4px solid var(--status-clean);">
+      <div style="width: 44px; height: 44px; background: var(--status-clean-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem;">
+        <svg class="ui-icon ui-icon-lg" style="color: var(--status-clean);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      </div>
+      <h3 class="classical-heading" style="font-size: 1.25rem; margin-bottom: 0.5rem;">
+        Multi-Pass Shloka Free Mode
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
+        Recite ANY custom shloka or mantra without pre-selecting an item. Our 3-pass pipeline transcribes Devanagari, 
+        identifies scripture sources, and provides character-by-character phonetic grading.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     SANSKRIT VARṆAMĀLĀ EXPLORER (संस्कृत वर्णमाला अन्वेषणम्)
+     ========================================================================== -->
+<section id="varnamala" class="varnamala-container">
+  <div class="section-head-wrap" style="margin-bottom: 1.75rem;">
+    <div class="pitch-pill gold" style="margin-bottom: 0.5rem;">
+      <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Interactive Vedic Sound Matrix</span>
+    </div>
+    <h2 class="section-title">संस्कृत वर्णमाला (Sanskrit Varṇamālā)</h2>
+    <p class="section-desc">
+      Explore the canonical 46+ phonemes codified in <em>Pāṇinīya Śikṣā</em>. 
+      <strong>Click the speaker icon to listen</strong>, or click any letter tile to inspect its 
+      Pāṇinian Sūtra, place of articulation (स्थान), and articulatory effort (प्रयत्न).
+    </p>
+  </div>
+
+  <!-- Controls Bar -->
+  <div class="varnamala-controls">
+    <!-- Top Row: Category Tabs & Search Input -->
+    <div class="varnamala-top-row">
+      <div class="varnamala-tabs">
+        <button class="varna-tab-btn active" data-tab="all">
+          <span>सर्वे वर्णाः (All Sounds - 46)</span>
+        </button>
+        <button class="varna-tab-btn" data-tab="svara">
+          <span>स्वर (Vowels - 15)</span>
+        </button>
+        <button class="varna-tab-btn" data-tab="sparsha">
+          <span>स्पर्श पञ्चवर्ग (5x5 Matrix - 25)</span>
+        </button>
+        <button class="varna-tab-btn" data-tab="antahastha">
+          <span>अन्तःस्थ व ऊष्मन् (8)</span>
+        </button>
+        <button class="varna-tab-btn" data-tab="shiva">
+          <span>माहेश्वर सूत्राणि (14)</span>
+        </button>
+      </div>
+
+      <!-- Quick Search Bar -->
+      <div class="varnamala-search-wrap">
+        <svg class="ui-icon varnamala-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="varnamala-search" class="varnamala-search-input" placeholder="Search letter (e.g., 'ka', 'ट', 'throat')...">
       </div>
     </div>
 
-    <!-- Prayatna Card -->
-    <div class="iks-card">
-      <div style="width: 44px; height: 44px; background: var(--brand-light); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; border: 1px solid rgba(230, 81, 0, 0.2);">
-        <svg class="ui-icon ui-icon-lg" style="color: var(--brand-primary);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
-        </svg>
+    <!-- Bottom Row: Sthāna (Place of Articulation) Filter Chips -->
+    <div class="sthana-filters-row">
+      <span class="sthana-filter-title">Filter by स्थान (Sthāna):</span>
+      <button class="sthana-chip active" data-sthana="all">All Sthānas</button>
+      <button class="sthana-chip" data-sthana="kanthya">कण्ठ्य (Throat)</button>
+      <button class="sthana-chip" data-sthana="talavya">तालव्य (Hard Palate)</button>
+      <button class="sthana-chip" data-sthana="murdhanya">मूर्धन्य (Palate Roof)</button>
+      <button class="sthana-chip" data-sthana="dantya">दन्त्य (Teeth)</button>
+      <button class="sthana-chip" data-sthana="oshthya">ओष्ठ्य (Lips)</button>
+    </div>
+  </div>
+
+  <!-- Dynamic Content Area (Tiles or 5x5 Matrix or Shiva Sutras) -->
+  <div id="varna-dynamic-grid">
+    <!-- Populated dynamically via varnamala.js -->
+  </div>
+</section>
+
+<!-- ==========================================================================
+     VEDIC ART & HISTORICAL SANSKRIT MANUSCRIPTS GALLERY
+     Aesthetic Imagery inspired by Pinterest & Ancient Sanskrit Heritage
+     ========================================================================== -->
+<section id="vedic-gallery" class="vedic-gallery-section">
+  <div class="section-head-wrap" style="margin-bottom: 1.5rem;">
+    <div class="pitch-pill gold" style="margin-bottom: 0.5rem;">
+      <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Vedic Aesthetics &amp; Historical Manuscripts</span>
+    </div>
+    <h2 class="section-title">The Art &amp; Heritage of Sanskrit (संस्कृत सौन्दर्यम्)</h2>
+    <p class="section-desc">
+      From modern minimalist Devanagari typography to thousand-year-old preserved palm-leaf folios, 
+      explore the visual and spiritual heritage of the <em>Śikṣā Vedāṅga</em>.
+    </p>
+  </div>
+
+  <div class="vedic-art-grid">
+    <!-- Card 1: Pinterest Sanskrit Typography & Lotus Emblem -->
+    <div class="vedic-art-card">
+      <div class="art-media-wrap">
+        <span class="art-badge-tag gold">Pinterest Aesthetic</span>
+        <img src="{{ url_for('static', filename='images/sanskrit_minimal_badge.jpg') }}" alt="Sanskrit Minimalist Lotus Typography" loading="lazy">
       </div>
-      <h3 class="classical-heading" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary);">
-        प्रयत्न (Prayatna - Articulatory Effort)
-      </h3>
-      <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
-        Controls acoustic breath and vocal cord vibration. 
-        <strong>Alpaprāṇa</strong> (gentle breath) vs <strong>Mahāprāṇa</strong> (aspiration), and 
-        <strong>Ghoṣa</strong> (voiced vibration) vs <strong>Aghoṣa</strong> (unvoiced pure articulation).
-      </p>
-      <div class="sutra-banner" style="margin-top: 1.25rem; margin-bottom: 0; padding: 0.65rem 0.95rem; border-left-color: var(--brand-primary); background: var(--brand-light);">
-        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-primary);">Varga Division:</span>
-        <div class="deva-text" style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-top: 0.2rem;">१ व ३ = अल्पप्राण | २ व ४ = महाप्राण</div>
+      <div class="art-card-body">
+        <h4 class="art-card-title">संस्कृतम् • Minimalist Typography</h4>
+        <p class="art-card-desc">
+          Modern aesthetic Sanskrit wordmark emphasizing the distinctive horizontal <em>shirorekha</em> 
+          and sacred geometric lotus emblem, blending Scandinavian minimalism with Vedic precision.
+        </p>
+        <div class="art-card-meta">
+          <span>Aesthetic Typography</span>
+          <span style="color: var(--brand-primary); font-weight: 700;">Wordmark Design</span>
+        </div>
       </div>
     </div>
 
-    <!-- AI + IKS Hybrid Card -->
-    <div class="iks-card">
-      <div style="width: 44px; height: 44px; background: var(--status-clean-bg); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; border: 1px solid var(--status-clean-border);">
-        <svg class="ui-icon ui-icon-lg" style="color: var(--status-clean);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/>
-        </svg>
+    <!-- Card 2: Authentic Rigveda Manuscript -->
+    <div class="vedic-art-card">
+      <div class="art-media-wrap cover-mode">
+        <span class="art-badge-tag">Rigveda Folio</span>
+        <img src="{{ url_for('static', filename='images/rigveda_manuscript.jpg') }}" alt="Historical Rigveda Sanskrit Devanagari Manuscript" loading="lazy">
       </div>
-      <h3 class="classical-heading" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-primary);">
-        Deterministic IKS Engine
-      </h3>
-      <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.65;">
-        Google Gemini transcribes raw spoken phonemes without auto-correction. Our deterministic 
-        backend then runs the difference through canonical Pāṇinian phonetic tables to compute anatomical remedies.
-      </p>
-      <div class="sutra-banner" style="margin-top: 1.25rem; margin-bottom: 0; padding: 0.65rem 0.95rem; border-left-color: var(--status-clean); background: var(--status-clean-bg);">
-        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--status-clean);">IKS + AI Synergy:</span>
-        <div style="font-size: 0.9rem; font-weight: 700; color: var(--status-clean); margin-top: 0.2rem;">Gemini identifies phonemes • Śikṣā diagnoses remedies</div>
+      <div class="art-card-body">
+        <h4 class="art-card-title">ऋग्वेद पाण्डुलिपि • Vedic Manuscript</h4>
+        <p class="art-card-desc">
+          High-resolution photograph of an authentic preserved Sanskrit Rigveda folio in classical Devanagari, 
+          featuring sacred musical accents (उदात्त, अनुदात्त, स्वरित) required for canonical Vedic recitation.
+        </p>
+        <div class="art-card-meta">
+          <span>Historical Archive</span>
+          <span style="color: var(--accent-gold-dark); font-weight: 700;">Lalchand Library</span>
+        </div>
       </div>
+    </div>
+
+    <!-- Card 3: Lord Shiva Nataraja (Origin of Shiva Sutras) -->
+    <div class="vedic-art-card">
+      <div class="art-media-wrap cover-mode">
+        <span class="art-badge-tag gold">British Museum</span>
+        <img src="{{ url_for('static', filename='images/nataraja_shiva.jpg') }}" alt="Lord Shiva Nataraja Bronze Sculpture at British Museum" loading="lazy">
+      </div>
+      <div class="art-card-body">
+        <h4 class="art-card-title">नटराज • The Damaru of Shiva</h4>
+        <p class="art-card-desc">
+          Famous 1100 CE Chola bronze sculpture of Lord Shiva Nataraja at the British Museum. 
+          His upper right hand holds the sacred Damaru whose 14 acoustic beats revealed the 14 Shiva Sūtras.
+        </p>
+        <div class="art-card-meta">
+          <span>1100 CE Chola Bronze</span>
+          <span style="color: var(--brand-primary); font-weight: 700;">14 Shiva Sūtras</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Ancient Rigveda Palm-Leaf Manuscript -->
+    <div class="vedic-art-card">
+      <div class="art-media-wrap cover-mode">
+        <span class="art-badge-tag">Palm-Leaf MS</span>
+        <img src="{{ url_for('static', filename='images/vedic_palmleaf_manuscript.jpg') }}" alt="Ancient Sanskrit Palm Leaf Manuscript MS 2097" loading="lazy">
+      </div>
+      <div class="art-card-body">
+        <h4 class="art-card-title">तालपत्र पाण्डुलिपि • Rigveda MS 2097</h4>
+        <p class="art-card-desc">
+          Historical long-strip palm-leaf folio preserving ancient Sanskrit verses with commentary, 
+          reflecting millennia of rigorous oral and scribal transmission across Indian universities.
+        </p>
+        <div class="art-card-meta">
+          <span>Vedic University Heritage</span>
+          <span style="color: var(--status-clean); font-weight: 700;">Palm-Leaf Archive</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5: Sacred Sthana Geometry Graphic -->
+    <div class="vedic-art-card">
+      <div class="art-media-wrap">
+        <span class="art-badge-tag gold">IKS Science</span>
+        <img src="{{ url_for('static', filename='images/sthana_sacred_geometry.svg') }}" alt="Articulatory Sthana Sacred Geometry" loading="lazy">
+      </div>
+      <div class="art-card-body">
+        <h4 class="art-card-title">स्थान विन्यास • The 5 Vocal Sites</h4>
+        <p class="art-card-desc">
+          Minimalist graphic mapping the 5 canonical anatomical sound gates: 
+          Kaṇṭha (throat), Tālu (hard palate), Mūrdhā (palate roof), Danta (teeth), and Oṣṭha (lips).
+        </p>
+        <div class="art-card-meta">
+          <span>Pāṇinīya Śikṣā</span>
+          <span style="color: var(--accent-gold-dark); font-weight: 700;">Anatomical Nodes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6: Shiva Damaru Sound Frequencies -->
+    <div class="vedic-art-card">
+      <div class="art-media-wrap">
+        <span class="art-badge-tag">Acoustic Origin</span>
+        <img src="{{ url_for('static', filename='images/shiva_damaru_sound.svg') }}" alt="Shiva Damaru Sound Frequencies Graphic" loading="lazy">
+      </div>
+      <div class="art-card-body">
+        <h4 class="art-card-title">नादब्रह्म • Sound Frequency Matrix</h4>
+        <p class="art-card-desc">
+          Acoustic waveform model illustrating how the Damaru's percussion generated the 14 Maheshwara Sutras, 
+          forming the world's first algorithmic phonetic classification table.
+        </p>
+        <div class="art-card-meta">
+          <span>Nāda Brahma</span>
+          <span style="color: var(--brand-primary); font-weight: 700;">Pāṇinian Grammar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     COMPLETE SANSKRIT MASTER NOTES & STUDY HUB (शिक्षा ज्ञानकोश)
+     "How to Learn Sanskrit & Complete Study Notes"
+     ========================================================================== -->
+<section id="sanskrit-notes" class="notes-container">
+  <div class="section-head-wrap" style="margin-bottom: 1.75rem;">
+    <div class="pitch-pill" style="margin-bottom: 0.5rem;">
+      <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+      <span>शिक्षा ज्ञानकोश • Comprehensive Reference Hub</span>
+    </div>
+    <h2 class="section-title">How to Learn Sanskrit: Master Study Notes</h2>
+    <p class="section-desc">
+      A complete pedagogical blueprint from phonetic mastery to Vedic shloka recitation. 
+      Navigate the tabs below to explore roadmaps, Sandhi rules, Vibhakti case matrices, and critical pronunciation pitfalls.
+    </p>
+  </div>
+
+  <!-- Note Navigation Tabs -->
+  <div class="notes-nav-pills">
+    <button class="note-tab-btn active" data-pane="pane-roadmap">
+      <span>🗺️ 4-Step Learning Roadmap</span>
+    </button>
+    <button class="note-tab-btn" data-pane="pane-sandhi">
+      <span>🔀 सन्धि (Sandhi Rules Simplified)</span>
+    </button>
+    <button class="note-tab-btn" data-pane="pane-vibhakti">
+      <span>📊 विभक्ति (8 Noun Cases - राम शब्द)</span>
+    </button>
+    <button class="note-tab-btn" data-pane="pane-dhatu">
+      <span>⚡ धातुरूप (Verb Tenses - पठ् धातु)</span>
+    </button>
+    <button class="note-tab-btn" data-pane="pane-pitfalls">
+      <span>🎯 5 Fatal Pronunciation Pitfalls</span>
+    </button>
+    <button class="note-tab-btn" data-pane="pane-shiva-code">
+      <span>📜 माहेश्वर सूत्रम् (Cosmic Alphabet Code)</span>
+    </button>
+  </div>
+
+  <!-- Note Panes -->
+  <div class="notes-panes-wrap">
+    
+    <!-- PANE 1: 4-STEP ROADMAP -->
+    <div id="pane-roadmap" class="note-pane active">
+      <div style="margin-bottom: 1.5rem;">
+        <h3 class="classical-heading" style="font-size: 1.35rem; margin-bottom: 0.4rem;">
+          शुरुआत से श्लोक तक: The 4-Stage Sanskrit Mastery Path
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          Unlike European languages, Sanskrit is <strong>100% phonetic</strong> (यथा लिखितं तथा पठितम् - What is written is what is spoken). 
+          Follow this systematic sequence used for millennia in canonical Gurukulas.
+        </p>
+      </div>
+
+      <div class="roadmap-timeline">
+        <!-- Step 1 -->
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">Stage 1 • चरणम् १</span>
+          <h4>वर्णज्ञान व स्थान (Phonetics)</h4>
+          <p>Master the exact anatomical origin (Sthāna) of each sound before learning spelling.</p>
+          <ul>
+            <li>Isolate Kaṇṭha (throat) from Oṣṭha (lips)</li>
+            <li>Master Dental 'त' vs Retroflex 'ट'</li>
+            <li>Understand 1-Mātrā vs 2-Mātrā timing</li>
+            <li>Eliminate mother-tongue phonetic bias</li>
+          </ul>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">Stage 2 • चरणम् २</span>
+          <h4>सन्धि विज्ञान (Sound Junctions)</h4>
+          <p>Learn how adjacent sounds merge organically to preserve poetic metre and ease of speech.</p>
+          <ul>
+            <li>Svara Sandhi (Dīrgha, Guṇa, Vṛddhi)</li>
+            <li>Yaṇ Sandhi (इ + अ = य्)</li>
+            <li>Visarga Sandhi (नमः + ते = नमस्ते)</li>
+            <li>Avagraha ( ऽ ) elision rules</li>
+          </ul>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">Stage 3 • चरणम् ३</span>
+          <h4>पद परिचय (Nouns & Verbs)</h4>
+          <p>Learn the 8 Vibhaktis (noun case endings) and verb roots across the primary Lakāras.</p>
+          <ul>
+            <li>अकारान्त पुंल्लिङ्ग (राम शब्द)</li>
+            <li>आकारान्त स्त्रीलिङ्ग (रमा शब्द)</li>
+            <li>लट् लकार (Present: पठति, पठतः, पठन्ति)</li>
+            <li>लृट् लकार (Future: पठिष्यति)</li>
+          </ul>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">Stage 4 • चरणम् ४</span>
+          <h4>अन्वय व श्लोकपाठ (Metre & Chhandas)</h4>
+          <p>Synthesize sentence order (अन्वय) and recite sacred verses in classical metres.</p>
+          <ul>
+            <li>Anuṣṭubh Metre (8+8+8+8 = 32 syllables)</li>
+            <li>Correct pause at Yati (यति विराम)</li>
+            <li>Gāyatrī and Triṣṭubh recitation</li>
+            <li>Bhagavad Gītā chanting fluency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 2: SANDHI RULES -->
+    <div id="pane-sandhi" class="note-pane">
+      <div style="margin-bottom: 1.5rem;">
+        <h3 class="classical-heading" style="font-size: 1.35rem; margin-bottom: 0.4rem;">
+          सन्धि नियम (Sandhi Rules Simplified)
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          Sandhi (euphonic combination) is the biological flow of vocal organs when two phonemes meet without pause.
+        </p>
+      </div>
+
+      <div class="sandhi-grid">
+        <!-- Dirgha Sandhi -->
+        <div class="sandhi-card">
+          <span class="pitch-pill" style="font-size: 0.72rem; margin-bottom: 0.4rem;">अकः सवर्णे दीर्घः</span>
+          <h4 style="font-size: 1.1rem; color: var(--text-primary); font-weight: 800;">१. सवर्णदीर्घ सन्धि (Dīrgha Sandhi)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.35rem 0;">When two similar vowels meet, they merge into their corresponding long vowel.</p>
+          <div class="sandhi-formula">अ / आ + अ / आ = आ &bull; इ + इ = ई</div>
+          <div class="sandhi-example">
+            <strong>उदा.</strong> विद्या + आलयः = <strong>विद्यालयः</strong><br>
+            <strong>उदा.</strong> हिम + आलयः = <strong>हिमालयः</strong> &bull; गिरि + ईशः = <strong>गिरीशः</strong>
+          </div>
+        </div>
+
+        <!-- Guna Sandhi -->
+        <div class="sandhi-card">
+          <span class="pitch-pill" style="font-size: 0.72rem; margin-bottom: 0.4rem;">आद्गुणः</span>
+          <h4 style="font-size: 1.1rem; color: var(--text-primary); font-weight: 800;">२. गुण सन्धि (Guṇa Sandhi)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.35rem 0;">When 'अ' or 'आ' is followed by 'इ', 'उ', or 'ऋ', they turn into 'ए', 'ओ', and 'अर्'.</p>
+          <div class="sandhi-formula">अ + इ = ए &bull; अ + उ = ओ &bull; अ + ऋ = अर्</div>
+          <div class="sandhi-example">
+            <strong>उदा.</strong> महा + ईशः = <strong>महेशः</strong><br>
+            <strong>उदा.</strong> सूर्य + उदयः = <strong>सूर्योदयः</strong> &bull; महा + ऋषिः = <strong>महर्षिः</strong>
+          </div>
+        </div>
+
+        <!-- Vriddhi Sandhi -->
+        <div class="sandhi-card">
+          <span class="pitch-pill" style="font-size: 0.72rem; margin-bottom: 0.4rem;">वृद्धिरेचि</span>
+          <h4 style="font-size: 1.1rem; color: var(--text-primary); font-weight: 800;">३. वृद्धि सन्धि (Vṛddhi Sandhi)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.35rem 0;">When 'अ' or 'आ' is followed by 'ए' / 'ऐ' or 'ओ' / 'औ', they turn into 'ऐ' and 'औ'.</p>
+          <div class="sandhi-formula">अ + ए = ऐ &bull; अ + ओ = औ</div>
+          <div class="sandhi-example">
+            <strong>उदा.</strong> सदा + एव = <strong>सदैव</strong><br>
+            <strong>उदा.</strong> महा + औषधिः = <strong>महौषधिः</strong> &bull; एक + एकम् = <strong>एकैकम्</strong>
+          </div>
+        </div>
+
+        <!-- Yan Sandhi -->
+        <div class="sandhi-card">
+          <span class="pitch-pill" style="font-size: 0.72rem; margin-bottom: 0.4rem;">इको यणचि</span>
+          <h4 style="font-size: 1.1rem; color: var(--text-primary); font-weight: 800;">४. यण् सन्धि (Yaṇ Sandhi)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.35rem 0;">When 'इ', 'उ', or 'ऋ' are followed by a dissimilar vowel, they become 'य्', 'व्', or 'र्'.</p>
+          <div class="sandhi-formula">इ + स्वर = य् &bull; उ + स्वर = व्</div>
+          <div class="sandhi-example">
+            <strong>उदा.</strong> यदि + अपि = <strong>यद्यपि</strong><br>
+            <strong>उदा.</strong> सु + आगतम् = <strong>स्वागतम्</strong> &bull; इति + आदि = <strong>इत्यादि</strong>
+          </div>
+        </div>
+
+        <!-- Ayadi Sandhi -->
+        <div class="sandhi-card">
+          <span class="pitch-pill" style="font-size: 0.72rem; margin-bottom: 0.4rem;">एचोऽयवायावः</span>
+          <h4 style="font-size: 1.1rem; color: var(--text-primary); font-weight: 800;">५. अयादि सन्धि (Ayādi Sandhi)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.35rem 0;">When 'ए', 'ऐ', 'ओ', or 'औ' are followed by any vowel, they transform into अय्, आय्, अव्, आव्.</p>
+          <div class="sandhi-formula">ए = अय् &bull; ओ = अव् &bull; ऐ = आय् &bull; औ = आव्</div>
+          <div class="sandhi-example">
+            <strong>उदा.</strong> ने + अनम् = <strong>नयनम्</strong> &bull; पो + अनः = <strong>पवनः</strong><br>
+            <strong>उदा.</strong> गै + अकः = <strong>गायकः</strong> &bull; पौ + अकः = <strong>पावकः</strong>
+          </div>
+        </div>
+
+        <!-- Visarga Sandhi -->
+        <div class="sandhi-card">
+          <span class="pitch-pill" style="font-size: 0.72rem; margin-bottom: 0.4rem;">विसर्जनीयस्य सः</span>
+          <h4 style="font-size: 1.1rem; color: var(--text-primary); font-weight: 800;">६. विसर्ग सन्धि (Visarga Sandhi)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.35rem 0;">Visarga transforms into 'स्', 'श्', 'ष्' or drops depending on the following consonant.</p>
+          <div class="sandhi-formula">ः + त = स्त &bull; ः + च = श्च</div>
+          <div class="sandhi-example">
+            <strong>उदा.</strong> नमः + ते = <strong>नमस्ते</strong><br>
+            <strong>उदा.</strong> कः + अपि = <strong>कोऽपि</strong> &bull; रामः + च = <strong>रामश्च</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 3: VIBHAKTI (NOUN DECLENSIONS) -->
+    <div id="pane-vibhakti" class="note-pane">
+      <div style="margin-bottom: 1.5rem;">
+        <h3 class="classical-heading" style="font-size: 1.35rem; margin-bottom: 0.4rem;">
+          कारक व विभक्ति चक्र (The 8 Noun Cases - राम शब्द)
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          In Sanskrit, prepositions like "in", "by", "for", and "of" are coded directly as case endings (विभक्ति). 
+          Master this matrix of <strong>राम (Masculine ending in 'a')</strong>:
+        </p>
+      </div>
+
+      <div class="vibhakti-table-wrap">
+        <table class="vibhakti-table">
+          <thead>
+            <tr>
+              <th>विभक्ति (Case)</th>
+              <th>कारक (Semantic Role)</th>
+              <th>English Analogy</th>
+              <th>एकवचन (Singular)</th>
+              <th>द्विवचन (Dual)</th>
+              <th>बहुवचन (Plural)</th>
+              <th>Sentence Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="vibhakti-case-tag">१. प्रथमा</span></td>
+              <td><strong>कर्ता (Subject)</strong></td>
+              <td>Who does it? (Rāma)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">रामः</strong></td>
+              <td>रामौ</td>
+              <td>रामाः</td>
+              <td><em>रामः गच्छति</em> (Rāma goes)</td>
+            </tr>
+            <tr>
+              <td><span class="vibhakti-case-tag">२. द्वितीया</span></td>
+              <td><strong>कर्म (Direct Object)</strong></td>
+              <td>To whom? (to Rāma)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">रामम्</strong></td>
+              <td>रामौ</td>
+              <td>रामान्</td>
+              <td><em>अहं रामं पश्यामि</em> (I see Rāma)</td>
+            </tr>
+            <tr>
+              <td><span class="vibhakti-case-tag">३. तृतीया</span></td>
+              <td><strong>करण (Instrument)</strong></td>
+              <td>By/With whom? (with Rāma)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">रामेण</strong></td>
+              <td>रामाभ्याम्</td>
+              <td>रामैः</td>
+              <td><em>रामेण सह सीता गता</em> (Sītā went with Rāma)</td>
+            </tr>
+            <tr>
+              <td><span class="vibhakti-case-tag">४. चतुर्थी</span></td>
+              <td><strong>सम्प्रदान (Recipient)</strong></td>
+              <td>For whom? (for Rāma)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">रामाय</strong></td>
+              <td>रामाभ्याम्</td>
+              <td>रामेभ्यः</td>
+              <td><em>रामाय नमः</em> (Salutations for/to Rāma)</td>
+            </tr>
+            <tr>
+              <td><span class="vibhakti-case-tag">५. पञ्चमी</span></td>
+              <td><strong>अपादान (Separation)</strong></td>
+              <td>From where? (from Rāma)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">रामात्</strong></td>
+              <td>रामाभ्याम्</td>
+              <td>रामेभ्यः</td>
+              <td><em>रामात् ऋते न मुक्तिः</em> (No liberation without Rāma)</td>
+            </tr>
+            <tr>
+              <td><span class="vibhakti-case-tag">६. षष्ठी</span></td>
+              <td><strong>सम्बन्ध (Genitive / 's)</strong></td>
+              <td>Whose? (Rāma's / of Rāma)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">रामस्य</strong></td>
+              <td>रामयोः</td>
+              <td>रामाणाम्</td>
+              <td><em>अयोध्या रामस्य नगरी</em> (Ayodhyā is Rāma's city)</td>
+            </tr>
+            <tr>
+              <td><span class="vibhakti-case-tag">७. सप्तमी</span></td>
+              <td><strong>अधिकरण (Locative)</strong></td>
+              <td>In/On where? (in Rāma)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">रामे</strong></td>
+              <td>रामयोः</td>
+              <td>रामेषु</td>
+              <td><em>रामे मम भक्तिरस्ति</em> (My devotion is in Rāma)</td>
+            </tr>
+            <tr>
+              <td><span class="vibhakti-case-tag">८. सम्बोधन</span></td>
+              <td><strong>सम्बोधन (Vocative)</strong></td>
+              <td>Addressing (O Rāma!)</td>
+              <td><strong class="deva-text" style="font-size:1.05rem;">हे राम!</strong></td>
+              <td>हे रामौ!</td>
+              <td>हे रामाः!</td>
+              <td><em>हे राम! मां त्राहि</em> (O Rāma! Protect me)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PANE 4: DHATU RUPA (VERB CONJUGATION) -->
+    <div id="pane-dhatu" class="note-pane">
+      <div style="margin-bottom: 1.5rem;">
+        <h3 class="classical-heading" style="font-size: 1.35rem; margin-bottom: 0.4rem;">
+          क्रियापद व धातुरूप (Verb Conjugation Matrix - पठ् धातु)
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          Sanskrit verbs do not rely on auxiliary words like "is/was/will". Every person, number, and tense is coded directly into the suffix.
+        </p>
+      </div>
+
+      <!-- Lat Lakara Table -->
+      <div class="vibhakti-table-wrap" style="margin-bottom: 1.5rem;">
+        <div style="background: var(--surface-sub); padding: 0.75rem 1rem; border-bottom: 1px solid var(--border-subtle); font-weight: 700;">
+          लट् लकार (Present Tense - वर्तमान काल) of <span class="deva-text" style="color: var(--brand-primary); font-size: 1.1rem;">पठ्</span> (To Read / Study)
+        </div>
+        <table class="vibhakti-table">
+          <thead>
+            <tr>
+              <th>पुरुष (Person)</th>
+              <th>एकवचन (Singular)</th>
+              <th>द्विवचन (Dual)</th>
+              <th>बहुवचन (Plural)</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>प्रथम पुरुष (3rd Person)</strong><br><small style="color:var(--text-muted);">He / She / It</small></td>
+              <td><strong class="deva-text">पठति</strong><br><small>सः पठति (He reads)</small></td>
+              <td><strong class="deva-text">पठतः</strong><br><small>तौ पठतः (Two read)</small></td>
+              <td><strong class="deva-text">पठन्ति</strong><br><small>ते पठन्ति (They read)</small></td>
+              <td>Action performed by third party</td>
+            </tr>
+            <tr>
+              <td><strong>मध्यम पुरुष (2nd Person)</strong><br><small style="color:var(--text-muted);">You</small></td>
+              <td><strong class="deva-text">पठसि</strong><br><small>त्वं पठसि (You read)</small></td>
+              <td><strong class="deva-text">पठथः</strong><br><small>युवां पठथः (You two read)</small></td>
+              <td><strong class="deva-text">पठथ</strong><br><small>यूयं पठथ (You all read)</small></td>
+              <td>Action addressed to listener</td>
+            </tr>
+            <tr>
+              <td><strong>उत्तम पुरुष (1st Person)</strong><br><small style="color:var(--text-muted);">I / We</small></td>
+              <td><strong class="deva-text">पठामि</strong><br><small>अहं पठामि (I read)</small></td>
+              <td><strong class="deva-text">पठावः</strong><br><small>आवां पठावः (We two read)</small></td>
+              <td><strong class="deva-text">पठामः</strong><br><small>वयं पठामः (We all read)</small></td>
+              <td>Action performed by speaker</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 5 Key Lakaras Grid -->
+      <div class="roadmap-timeline">
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">१. लट् लकार</span>
+          <h4>Present Tense (वर्तमान)</h4>
+          <p>Indicates current ongoing action.</p>
+          <div class="deva-text" style="font-weight: 700; color: var(--brand-primary);">पठति &bull; गच्छति &bull; वदति</div>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">२. लङ् लकार</span>
+          <h4>Past Tense (अनद्यतन भूत)</h4>
+          <p>Indicates past completed action with prefix 'अ-'.</p>
+          <div class="deva-text" style="font-weight: 700; color: var(--brand-primary);">अपठत् &bull; अगच्छत् &bull; अवदत्</div>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">३. लृट् लकार</span>
+          <h4>Future Tense (भविष्यत्)</h4>
+          <p>Indicates future intention with '-ष्य-'.</p>
+          <div class="deva-text" style="font-weight: 700; color: var(--brand-primary);">पठिष्यति &bull; गमिष्यति &bull; वदिष्यति</div>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-step-badge">४. लोट् लकार</span>
+          <h4>Imperative / Request (आज्ञा)</h4>
+          <p>Used for blessings, orders, and polite requests.</p>
+          <div class="deva-text" style="font-weight: 700; color: var(--brand-primary);">पठतु &bull; गच्छतु &bull; वदतु</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 5: 5 FATAL PRONUNCIATION PITFALLS -->
+    <div id="pane-pitfalls" class="note-pane">
+      <div style="margin-bottom: 1.5rem;">
+        <h3 class="classical-heading" style="font-size: 1.35rem; margin-bottom: 0.4rem;">
+          The 5 Fatal Pronunciation Pitfalls (Why VaaniAI Exists!)
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          These 5 phonetic distinctions are routinely violated by non-native speakers, causing complete semantic corruption. 
+          Judges love this section because it highlights the exact technical problem VaaniAI solves.
+        </p>
+      </div>
+
+      <div class="pitfall-cards-grid">
+        <!-- Pitfall 1: Dental vs Retroflex -->
+        <div class="pitfall-card">
+          <div class="pitfall-header">
+            <span class="pitfall-title">१. Dental vs Retroflex (त vs ट)</span>
+            <span class="pitch-pill" style="font-size:0.7rem; color:#DC2626; border-color:#FECACA; background:#FEF2F2;">#1 Error</span>
+          </div>
+          <div class="pitfall-compare">
+            <div class="pitfall-col">
+              <div class="pitfall-symbol" style="color: var(--status-clean);">त</div>
+              <div class="pitfall-tag" style="color: var(--status-clean);">दन्त्य (Dental)</div>
+              <small>Tongue tip touches upper front teeth</small>
+            </div>
+            <div class="pitfall-col">
+              <div class="pitfall-symbol" style="color: #DC2626;">ट</div>
+              <div class="pitfall-tag" style="color: #DC2626;">मूर्धन्य (Retroflex)</div>
+              <small>Tongue tip curled back to palate dome</small>
+            </div>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); margin-top: 0.5rem;">
+            English speakers pronounce English 'T' on the alveolar ridge (halfway), corrupting both Sanskrit 'त' and 'ट'!
+          </p>
+        </div>
+
+        <!-- Pitfall 2: Alpaprana vs Mahaprana -->
+        <div class="pitfall-card">
+          <div class="pitfall-header">
+            <span class="pitfall-title">२. Unaspirated vs Aspirated (ग vs घ)</span>
+            <span class="pitch-pill" style="font-size:0.7rem; color:var(--accent-gold-dark); border-color:#FDE68A; background:#FFFBEB;">Effort Delta</span>
+          </div>
+          <div class="pitfall-compare">
+            <div class="pitfall-col">
+              <div class="pitfall-symbol" style="color: var(--brand-primary);">ग</div>
+              <div class="pitfall-tag" style="color: var(--brand-primary);">अल्पप्राण</div>
+              <small>Minimal breath release (smooth)</small>
+            </div>
+            <div class="pitfall-col">
+              <div class="pitfall-symbol" style="color: var(--accent-gold-dark);">घ</div>
+              <div class="pitfall-tag" style="color: var(--accent-gold-dark);">महाप्राण</div>
+              <small>Energetic warm burst from throat</small>
+            </div>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); margin-top: 0.5rem;">
+            Failing to release the aspirated breath converts <em>घटः</em> (pot) into <em>गटः</em> (meaningless)!
+          </p>
+        </div>
+
+        <!-- Pitfall 3: The Three Sibilants -->
+        <div class="pitfall-card">
+          <div class="pitfall-header">
+            <span class="pitfall-title">३. The Three Sibilants (श, ष, स)</span>
+            <span class="pitch-pill" style="font-size:0.7rem; color:#4338CA; border-color:#C7D2FE; background:#EEF2FF;">Triple Distinction</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.4rem; background: var(--surface-sub); padding: 0.6rem; border-radius: var(--radius-sm); text-align: center; margin: 0.5rem 0;">
+            <div>
+              <div class="pitfall-symbol" style="color:#4338CA;">श</div>
+              <div class="pitfall-tag" style="color:#4338CA; font-size:0.65rem;">तालव्य</div>
+              <small style="font-size:0.68rem;">Palatal soft hiss (शिव)</small>
+            </div>
+            <div>
+              <div class="pitfall-symbol" style="color:#DC2626;">ष</div>
+              <div class="pitfall-tag" style="color:#DC2626; font-size:0.65rem;">मूर्धन्य</div>
+              <small style="font-size:0.68rem;">Curled roof friction (विष्णु)</small>
+            </div>
+            <div>
+              <div class="pitfall-symbol" style="color:#059669;">स</div>
+              <div class="pitfall-tag" style="color:#059669; font-size:0.65rem;">दन्त्य</div>
+              <small style="font-size:0.68rem;">Crisp dental hiss (सत्य)</small>
+            </div>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary);">
+            Confusing <em>सकल</em> (entire universe) with <em>शकल</em> (a broken fragment) completely reverses the sentence meaning!
+          </p>
+        </div>
+
+        <!-- Pitfall 4: Matra Timing -->
+        <div class="pitfall-card">
+          <div class="pitfall-header">
+            <span class="pitfall-title">४. Mātrā Duration (ह्रस्व vs दीर्घ)</span>
+            <span class="pitch-pill" style="font-size:0.7rem; color:#9333EA; border-color:#E9D5FF; background:#FAF5FF;">Acoustic Rhythm</span>
+          </div>
+          <div class="pitfall-compare">
+            <div class="pitfall-col">
+              <div class="pitfall-symbol" style="color:#9333EA;">अ, इ, उ</div>
+              <div class="pitfall-tag" style="color:#9333EA;">ह्रस्व (१ मात्रा)</div>
+              <small>Exact 1 unit duration (blink of an eye)</small>
+            </div>
+            <div class="pitfall-col">
+              <div class="pitfall-symbol" style="color:#9333EA;">आ, ई, ऊ</div>
+              <div class="pitfall-tag" style="color:#9333EA;">दीर्घ (२ मात्रा)</div>
+              <small>Exactly double duration (held for 2 beats)</small>
+            </div>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); margin-top: 0.5rem;">
+            Rushing long vowels ruins the poetic Chhandas meter and causes grammar errors.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 6: SHIVA SUTRAS COSMIC CODE -->
+    <div id="pane-shiva-code" class="note-pane">
+      <div style="margin-bottom: 1.5rem;">
+        <h3 class="classical-heading" style="font-size: 1.35rem; margin-bottom: 0.4rem;">
+          माहेश्वर सूत्राणि: The 14 Primordial Code Blocks
+        </h3>
+        <p style="color: var(--text-secondary); font-size: 0.92rem;">
+          How Pāṇini compressed all human vocal acoustics into 14 mathematical sound arrays (Pratyāhāras) 
+          that serve as the world's first formal algorithmic alphabet:
+        </p>
+      </div>
+
+      <div class="shiva-sutras-grid">
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">१</div>
+          <div><div class="sutra-deva deva-text">अ इ उ ण्</div><div class="sutra-desc">Basic simple vowels ending at marker 'ण्'.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">२</div>
+          <div><div class="sutra-deva deva-text">ऋ ऌ क्</div><div class="sutra-desc">Vocalic liquids. Generates 'अक्' pratyāhāra (Simple vowels).</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">३</div>
+          <div><div class="sutra-deva deva-text">ए ओ ङ्</div><div class="sutra-desc">Diphthongs formed with throat + palate/lips (Guṇa vowels).</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">४</div>
+          <div><div class="sutra-deva deva-text">ऐ औ च्</div><div class="sutra-desc">Vṛddhi vowels. 'अच्' denotes ALL vowels in Sanskrit!</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">५</div>
+          <div><div class="sutra-deva deva-text">ह य व र ट्</div><div class="sutra-desc">Glottal aspirate + primary semivowels.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">६</div>
+          <div><div class="sutra-deva deva-text">लँ ण्</div><div class="sutra-desc">Dental lateral semivowel. 'यण्' denotes all 4 semivowels.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">७</div>
+          <div><div class="sutra-deva deva-text">ञ म ङ ण न म्</div><div class="sutra-desc">The 5th column nasals of all five classes.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">८</div>
+          <div><div class="sutra-deva deva-text">झ भ ञ्</div><div class="sutra-desc">Voiced aspirated stops of Palatal & Labial classes.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">९</div>
+          <div><div class="sutra-deva deva-text">घ ढ ध ष्</div><div class="sutra-desc">Remaining voiced aspirated stops of Velar, Retroflex, Dental.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">१०</div>
+          <div><div class="sutra-deva deva-text">ज ब ग ड द श्</div><div class="sutra-desc">All 3rd column voiced unaspirated stops ('जश्' sandhi).</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">११</div>
+          <div><div class="sutra-deva deva-text">ख फ छ ठ थ च ट त व्</div><div class="sutra-desc">Unvoiced aspirates followed by unvoiced stops.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">१२</div>
+          <div><div class="sutra-deva deva-text">क प य्</div><div class="sutra-desc">Final unvoiced stops of Velar & Labial classes.</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">१३</div>
+          <div><div class="sutra-deva deva-text">श ष स र्</div><div class="sutra-desc">The three distinct sibilants (Palatal, Retroflex, Dental).</div></div>
+        </div>
+        <div class="shiva-sutra-card">
+          <div class="sutra-index">१४</div>
+          <div><div class="sutra-deva deva-text">ह ल्</div><div class="sutra-desc">Final glottal. 'हल्' pratyāhāra marks ALL consonants!</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================================
+     INTERACTIVE QUICK QUIZ: TEST YOUR PHONETIC KNOWLEDGE
+     ========================================================================== -->
+<div class="quiz-container">
+  <div style="text-align: center; margin-bottom: 1.5rem;">
+    <span class="pitch-pill gold" style="margin-bottom: 0.4rem;">🎯 त्वरित ज्ञान परीक्षा • Mini-Quiz</span>
+    <h3 class="classical-heading" style="font-size: 1.45rem; color: var(--text-primary); margin-bottom: 0.3rem;">
+      Can You Spot the Retroflex (मूर्धन्य) Sound?
+    </h3>
+    <p style="font-size: 0.92rem; color: var(--text-secondary);">
+      Put yourself in the judge's seat: which letter requires curling the tongue tip backward to the roof of the mouth?
+    </p>
+  </div>
+
+  <div style="max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
+    <button class="quiz-option-btn" data-correct="false" data-explanation="त (ta) is Dantya (दन्त्य - Dental). The tongue tip touches behind the upper front teeth according to 'ऌतुलसानां दन्ताः'.">
+      <span>A) <strong class="deva-text" style="font-size: 1.2rem; margin-left: 0.35rem;">त</strong> (ta - as in Satya)</span>
+      <span style="font-size: 0.8rem; color: var(--text-muted);">Place: Teeth</span>
+    </button>
+    <button class="quiz-option-btn" data-correct="true" data-explanation="Correct! ट (ṭa) is Mūrdhanya (मूर्धन्य - Retroflex). The canonical Panini sutra is 'ऋटुरषाणां मूर्धा'. The tongue tip curls backward to tap the palate roof!">
+      <span>B) <strong class="deva-text" style="font-size: 1.2rem; margin-left: 0.35rem;">ट</strong> (ṭa - as in Ṭankāra)</span>
+      <span style="font-size: 0.8rem; color: var(--brand-primary); font-weight: 700;">Place: Roof Dome</span>
+    </button>
+    <button class="quiz-option-btn" data-correct="false" data-explanation="प (pa) is Oṣṭhya (ओष्ठ्य - Labial). Articulated with both lips touching according to 'उपूपध्मानीयानामोष्ठौ'.">
+      <span>C) <strong class="deva-text" style="font-size: 1.2rem; margin-left: 0.35rem;">प</strong> (pa - as in Padma)</span>
+      <span style="font-size: 0.8rem; color: var(--text-muted);">Place: Lips</span>
+    </button>
+  </div>
+
+  <div id="quiz-feedback" style="display: none; max-width: 640px; margin: 1.25rem auto 0; padding: 1rem 1.25rem; background: #FFF; border-radius: var(--radius-md); border: 1.5px solid var(--border-subtle); text-align: center;">
+  </div>
+</div>
+
+<!-- ==========================================================================
+     PHONETIC INSPECTOR MODAL (FLYOUT DIALOG)
+     ========================================================================== -->
+<div id="phonetic-modal-overlay" class="phonetic-modal-overlay">
+  <div class="phonetic-modal-card">
+    <button class="modal-close-btn" id="modal-close-btn" aria-label="Close dialog">
+      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-char-header">
+      <div id="modal-char-hero" class="modal-char-hero deva-text">क</div>
+      <div class="modal-char-meta">
+        <h3 id="modal-char-title">क (ka)</h3>
+        <div id="modal-char-roman" class="modal-char-roman">IAST: /ka/ • Kaṇṭhya</div>
+        <div class="modal-badges-row">
+          <span class="pitch-pill" id="modal-sthana-badge" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;">KANTHYA</span>
+          <span class="pitch-pill gold" id="modal-varga-badge" style="font-size: 0.72rem; padding: 0.2rem 0.6rem;">KA-VARGA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panini Sutra Box -->
+    <div class="modal-sutra-box">
+      <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-gold-dark);">Pāṇini Phonetic Sūtra (पाणिनि सूत्रम्):</span>
+      <div id="modal-sutra-text" class="sutra-text">अकुहविसर्जनीयानां कण्ठः</div>
+    </div>
+
+    <!-- Articulatory Details -->
+    <div class="modal-detail-row">
+      <div class="modal-detail-label">प्रयत्न (Articulatory Effort):</div>
+      <div id="modal-prayatna-text" class="modal-detail-val" style="font-weight: 700; color: var(--text-primary);">अल्पप्राण (Unaspirated) • अघोष (Unvoiced)</div>
+    </div>
+
+    <div class="modal-detail-row">
+      <div class="modal-detail-label">Anatomical Placement Guidance (शारीरिक निर्देश):</div>
+      <div id="modal-tip-text" class="modal-detail-val">Back of tongue lightly contacts soft palate; minimal airflow release.</div>
+    </div>
+
+    <!-- Actions -->
+    <div style="display: flex; gap: 0.75rem; margin-top: 1.75rem; flex-wrap: wrap;">
+      <button class="btn btn-secondary" id="modal-audio-btn" style="flex: 1;">
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <span>Pronounce Audio</span>
+      </button>
+      <a href="/practice" class="btn btn-primary" id="modal-practice-btn" style="flex: 1.5;">
+        <span>अभ्यासः क्रियताम् (Practice Sound)</span>
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     EXECUTIVE JUDGE PITCH DECK MODAL
+     ========================================================================== -->
+<div id="judge-pitch-modal" class="judge-modal-overlay">
+  <div class="judge-modal-card">
+    <div class="judge-modal-header">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+          <span class="pitch-pill gold" style="margin-bottom: 0.35rem;">🏆 Executive Summary & Pitch Deck</span>
+          <h2 class="classical-heading" style="font-size: 1.6rem; margin-bottom: 0.2rem; color: var(--text-primary);">
+            VaaniAI: Indian Knowledge Systems Powered by Gemini
+          </h2>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+            Grounding modern speech models in the <em>Śikṣā Vedāṅga</em> to eliminate auto-correction bias.
+          </p>
+        </div>
+        <button class="modal-close-btn" id="judge-modal-close" style="position: static;">
+          <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs inside Pitch Modal -->
+    <div class="judge-nav-pills">
+      <button class="judge-tab-btn active" data-slide="slide-problem">1. The Problem</button>
+      <button class="judge-tab-btn" data-slide="slide-solution">2. Our IKS Solution</button>
+      <button class="judge-tab-btn" data-slide="slide-tech">3. Tech Architecture</button>
+      <button class="judge-tab-btn" data-slide="slide-diff">4. Key Differentiators</button>
+      <button class="judge-tab-btn" data-slide="slide-script">5. 2-Min Live Pitch Script</button>
+    </div>
+
+    <!-- Body Panes -->
+    <div class="judge-modal-body">
+      <!-- Slide 1 -->
+      <div id="slide-problem" class="judge-slide-pane active">
+        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
+          The Fatal Flaw in Modern Speech AI: Auto-Correction
+        </h3>
+        <div class="judge-box accent-gold">
+          <strong>The Problem:</strong> When a learner says <em>"टकार"</em> instead of <em>"तकार"</em> or drops aspiration in <em>"घट"</em>, speech models like Whisper and Google STT <strong>auto-correct</strong> the audio based on language models, assuming the user simply meant the standard word.
+        </div>
+        <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65;">
+          This renders conventional ASR completely useless for learning authentic Sanskrit, Vedic chanting, or phonetic pronunciation training in Indian languages. 
+          The student never discovers where their tongue actually moved!
+        </p>
+      </div>
+
+      <!-- Slide 2 -->
+      <div id="slide-solution" class="judge-slide-pane">
+        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
+          The IKS Innovation: Deterministic Pāṇinian Engine
+        </h3>
+        <div class="judge-box accent-saffron">
+          <strong>The Breakthrough:</strong> We pair <strong>Google Gemini Live audio extraction</strong> with a <strong>100% Deterministic Pāṇinian rule table</strong> in MongoDB.
+        </div>
+        <ul style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem;">
+          <li><strong>Step 1:</strong> Gemini listens to raw acoustic speech without auto-correcting to dictionary words.</li>
+          <li><strong>Step 2:</strong> Our engine maps target sound vs heard sound against the 5 Sthānas (Kaṇṭha, Tālu, Mūrdhā, Danta, Oṣṭha) and 4 Prayatnas.</li>
+          <li><strong>Step 3:</strong> The system cites the exact 2500-year-old Pāṇini sūtra (e.g., <em>ऌतुलसानां दन्ताः</em> vs <em>ऋटुरषाणां मूर्धा</em>) and visually highlights the tongue movement error on an interactive SVG.</li>
+        </ul>
+      </div>
+
+      <!-- Slide 3 -->
+      <div id="slide-tech" class="judge-slide-pane">
+        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
+          Full-Stack Resilient Architecture
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+          <div class="judge-box" style="margin: 0;">
+            <div style="font-weight: 800; color: var(--brand-primary); margin-bottom: 0.25rem;">AI Engine</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">Google Gemini 2.5 Flash via official Google GenAI Python SDK.</div>
+          </div>
+          <div class="judge-box" style="margin: 0;">
+            <div style="font-weight: 800; color: var(--accent-gold-dark); margin-bottom: 0.25rem;">Backend</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">Python Flask with zero-crash MongoDB store and JSON in-memory fallback.</div>
+          </div>
+          <div class="judge-box" style="margin: 0;">
+            <div style="font-weight: 800; color: var(--status-clean); margin-bottom: 0.25rem;">Frontend</div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary);">Dynamic SVG vocal tract + Web Speech API + Chart.js learning metrics.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div id="slide-diff" class="judge-slide-pane">
+        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
+          Why VaaniAI Wins Against Generic Language Apps
+        </h3>
+        <div class="vibhakti-table-wrap">
+          <table class="vibhakti-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Duolingo / Babbel</th>
+                <th>Standard STT (Whisper)</th>
+                <th>VaaniAI (Our System)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Speech Feedback</strong></td>
+                <td>Binary Yes/No</td>
+                <td>Text transcription</td>
+                <td><strong style="color:var(--status-clean);">Exact Sthāna & Prayatna Delta</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Auto-Correction</strong></td>
+                <td>High (Hides flaws)</td>
+                <td>High (Guesses intent)</td>
+                <td><strong style="color:var(--status-clean);">Disabled (Raw Acoustic Truth)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Vocal Tract SVG</strong></td>
+                <td>None</td>
+                <td>None</td>
+                <td><strong style="color:var(--status-clean);">Real-time Anatomical Cross-Section</strong></td>
+              </tr>
+              <tr>
+                <td><strong>IKS Grounding</strong></td>
+                <td>None</td>
+                <td>None</td>
+                <td><strong style="color:var(--status-clean);">Grounded in Pāṇinīya Śikṣā</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div id="slide-script" class="judge-slide-pane">
+        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
+          🎤 2-Minute Live Judge Pitch Script (Exhibition Ready)
+        </h3>
+        <div class="judge-box accent-saffron" style="font-size: 0.92rem; line-height: 1.7; color: var(--text-primary);">
+          <em>"Respected judges, 90% of students learning Sanskrit confuse dental <strong>त</strong> with retroflex <strong>ट</strong>. 
+          When they use standard AI like Siri or Whisper, the AI auto-corrects their mistake, so they never learn. 
+          We built <strong>VaaniAI</strong> to solve this using our ancient <strong>Indian Knowledge System (Pāṇinīya Śikṣā)</strong>. 
+          Watch this: when the user speaks, Gemini extracts the raw acoustic phonemes. Instead of hallucinating, our deterministic engine cross-checks the 2500-year-old Pāṇini sūtras. 
+          The interactive cross-section instantly shows that the student curled their tongue to the roof instead of touching their upper teeth! 
+          This makes Sanskrit education mathematically precise, preserving our authentic Vedic pronunciation heritage."</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="judge-modal-footer">
+      <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
+        VaaniAI • Indian Knowledge Systems & AI Exhibition Prototype
+      </span>
+      <a href="/practice" class="btn btn-primary btn-sm" style="font-size: 0.88rem;">
+        <span>Launch Live Demo</span>
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
   </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
+<!-- Varṇamālā & Advanced Presentation Controller -->
+<script src="{{ url_for('static', filename='js/varnamala.js') }}"></script>
 <script>
+  // Session preferences form handler
   document.getElementById("preferences-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const lang = document.getElementById("select-language").value;

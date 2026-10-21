@@ -9,6 +9,9 @@
   <meta name="description" content="AI-powered Sanskrit pronunciation and phonetic correction system grounded in Indian Knowledge Systems (Pāṇinīya Śikṣā).">
   <meta name="theme-color" content="#E65100">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='images/vaani_logo.jpg') }}">
+
   <!-- Premium Typography: Eczar (Classical Sanskrit Serif), Noto Serif Devanagari, Plus Jakarta Sans (Modern UI), Cinzel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +22,7 @@
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/varnamala.css') }}">
   <!-- SVG Icon Library -->
   <script src="{{ url_for('static', filename='js/icons.js') }}"></script>
   {% block extra_head %}{% endblock %}
@@ -28,62 +32,93 @@
   <!-- Top Floating Glassmorphic Navbar -->
   <header class="navbar">
     <div class="nav-container">
+      
+      <!-- Left: Brand Identity with Official Logo -->
       <a href="{{ url_for('index') }}" class="brand-link" id="brand-home-link" title="VaaniAI Home">
-        <div class="brand-icon deva-text">वा</div>
-        <div>
-          <div class="brand-name">वाणी<span class="brand-accent">AI</span></div>
-          <div class="brand-subtitle">पाणिनीय शिक्षा • Pāṇinian Phonetics</div>
+        <img src="{{ url_for('static', filename='images/vaani_logo.jpg') }}" alt="Vaani AI Official Logo" class="brand-logo-img">
+        <div class="brand-text-block">
+          <div class="brand-name">Vaani<span class="brand-accent">AI</span></div>
+          <span class="brand-badge-sanskrit">पाणिनीय शिक्षा • Sanskrit &amp; English</span>
         </div>
       </a>
 
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
+      <!-- Center: Segmented Capsule Navigation -->
       <nav>
-        <ul class="nav-links" id="nav-links">
-          <li>
-            <a href="{{ url_for('index') }}" class="nav-link {% if request.path == '/' %}active{% endif %}" id="nav-home">
+        <ul class="nav-segmented-capsule" id="nav-links">
+          <li class="nav-capsule-item">
+            <a href="{{ url_for('index') }}" class="nav-link {% if request.path == '/' and not request.args.get('pitch') %}active{% endif %}" id="nav-home">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
               <span>Home</span>
             </a>
           </li>
-          <li>
-            <a href="{{ url_for('practice') }}" class="nav-link {% if request.path == '/practice' %}active{% endif %}" id="nav-practice">
-              <span>Practice (अभ्यासः)</span>
+          <li class="nav-capsule-item">
+            <a href="{{ url_for('index') }}#varnamala" class="nav-link" id="nav-varnamala" title="Sanskrit Alphabet & Phonetics">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+              <span>वर्णमाला</span>
             </a>
           </li>
-          <li>
-            <a href="{{ url_for('free_mode') }}" class="nav-link {% if request.path == '/free' %}active{% endif %}" id="nav-free">
-              <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/>
-              </svg>
+          <li class="nav-capsule-item">
+            <a href="{{ url_for('index') }}#vedic-gallery" class="nav-link" id="nav-gallery" title="Vedic Art & Historical Manuscripts">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              <span>वैदिक कला</span>
+            </a>
+          </li>
+          <li class="nav-capsule-item">
+            <a href="{{ url_for('index') }}#sanskrit-notes" class="nav-link" id="nav-notes" title="How to Learn Sanskrit & Study Notes">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+              <span>शिक्षा नोट्स</span>
+            </a>
+          </li>
+          <li class="nav-capsule-item">
+            <a href="{{ url_for('practice') }}" class="nav-link {% if request.path == '/practice' %}active{% endif %}" id="nav-practice" title="Articulatory Practice">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+              <span>Practice</span>
+            </a>
+          </li>
+          <li class="nav-capsule-item">
+            <a href="{{ url_for('free_mode') }}" class="nav-link {% if request.path == '/free' %}active{% endif %}" id="nav-free" title="Free Shloka Recitation">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
               <span>Free Mode</span>
             </a>
           </li>
-          <li>
-            <a href="{{ url_for('dashboard') }}" class="nav-link {% if request.path == '/dashboard' %}active{% endif %}" id="nav-dashboard">
-              <span>Dashboard (प्रगतिः)</span>
+          <li class="nav-capsule-item">
+            <a href="{{ url_for('dashboard') }}" class="nav-link {% if request.path == '/dashboard' %}active{% endif %}" id="nav-dashboard" title="Student Analytics">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+              <span>Dashboard</span>
             </a>
-          </li>
-          <li>
-            {% if demo_mode %}
-            <span class="badge-demo" id="demo-mode-badge" title="Running in deterministic Demo Mode for reliable stage exhibition">
-              <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.2rem;">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-              </svg>
-              <span>Demo Mode</span>
-            </span>
-            {% else %}
-            <span class="badge-status-live" title="Connected to Google Gemini Live API">
-              <span class="pulse-dot"></span>
-              <span>Gemini Live</span>
-            </span>
-            {% endif %}
           </li>
         </ul>
       </nav>
+
+      <!-- Right: Action & Status Group -->
+      <div class="nav-action-cluster">
+        <button class="btn-judge-nav trigger-judge-pitch" title="Open Judge Presentation Deck">
+          <span>🏆</span>
+          <span>Pitch to Judges</span>
+        </button>
+
+        {% if demo_mode %}
+        <span class="badge-demo" id="demo-mode-badge" title="Running in deterministic Demo Mode for reliable stage exhibition">
+          <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span>Demo</span>
+        </span>
+        {% else %}
+        <span class="badge-status-live" title="Connected to Google Gemini Live API">
+          <span class="pulse-dot"></span>
+          <span>Gemini Live</span>
+        </span>
+        {% endif %}
+
+        <!-- Mobile Toggle Hamburger Button -->
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
     </div>
   </header>
 
@@ -97,12 +132,16 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
-      <div>
-        <strong>VaaniAI</strong> — Grounded in <em>Pāṇinīya Śikṣā</em> (पाणिनीय शिक्षा)
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.25rem;">
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img src="{{ url_for('static', filename='images/vaani_logo.jpg') }}" alt="Vaani AI Official Logo" style="height: 42px; width: 42px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border-subtle); background: #FFF;">
+        <div>
+          <div style="font-weight: 800; color: var(--text-primary); font-size: 1.05rem;">Vaani<span style="color: var(--brand-primary);">AI</span></div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">Grounded in <em>Pāṇinīya Śikṣā</em> (पाणिनीय शिक्षा) • Sanskrit &amp; English</div>
+        </div>
       </div>
-      <div>
-        College IKS Exhibition Prototype • AI & Data Science
+      <div style="font-size: 0.85rem; color: var(--text-secondary);">
+        College IKS Exhibition Prototype • AI &amp; Data Science
       </div>
     </div>
   </footer>
@@ -137,6 +176,16 @@
           }
         });
       }
+
+      // If clicked "Pitch to Judges" from other pages, redirect to home with pitch modal open
+      document.querySelectorAll('.trigger-judge-pitch').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          if (!document.getElementById('judge-pitch-modal')) {
+            e.preventDefault();
+            window.location.href = '/?pitch=true';
+          }
+        });
+      });
     })();
   </script>
   {% block scripts %}{% endblock %}
