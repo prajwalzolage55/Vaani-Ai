@@ -10,6 +10,7 @@ import json
 import logging
 import subprocess
 import shutil
+import time
 from pathlib import Path
 
 from config import Config
@@ -17,6 +18,10 @@ from services.phonetics_service import PhoneticsService
 from services.scoring import ScoringService
 
 logger = logging.getLogger("vaaniai.gemini")
+
+# Fallback models to try when the primary model returns 503/429 rate-limit errors.
+# Order matters: first working model wins.
+FALLBACK_MODELS = ["gemini-3.5-flash", "gemini-3.8-flash"]
 
 # System prompt enforcing strict Paninian Shiksha phonetics without auto-correction
 SHIKSHA_SYSTEM_INSTRUCTION = """
@@ -345,6 +350,49 @@ class GeminiService:
             except Exception as e:
                 logger.warning(f"Could not initialize GenAI client: {e}")
 
+    def _call_with_retry(self, contents, config, max_retries=3, initial_delay=1.0):
+        """
+        Call Gemini generate_content with exponential backoff and model fallback.
+        On 503 UNAVAILABLE or 429 RESOURCE_EXHAUSTED errors, retries with increasing
+        delays and then falls back to alternative models.
+        Returns the response object on success, raises the last exception on total failure.
+        """
+        models_to_try = [self.model_name] + [
+            m for m in FALLBACK_MODELS if m != self.model_name
+        ]
+
+        last_exception = None
+        for model in models_to_try:
+            for attempt in range(max_retries):
+                try:
+                    response = self.client.models.generate_content(
+                        model=model,
+                        contents=contents,
+                        config=config,
+                    )
+                    if model != self.model_name:
+                        logger.info(f"Succeeded with fallback model: {model}")
+                    return response
+                except Exception as e:
+                    last_exception = e
+                    err_str = str(e)
+                    is_retryable = any(code in err_str for code in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED"])
+                    if is_retryable and attempt < max_retries - 1:
+                        delay = initial_delay * (2 ** attempt)
+                        logger.warning(
+                            f"Retryable error on {model} (attempt {attempt+1}/{max_retries}), "
+                            f"retrying in {delay}s: {e}"
+                        )
+                        time.sleep(delay)
+                    elif is_retryable:
+                        logger.warning(f"Model {model} exhausted retries, trying next fallback...")
+                        break  # move to next model
+                    else:
+                        raise  # non-retryable error, propagate immediately
+
+        # All models and retries exhausted
+        raise last_exception
+
     def _convert_audio_if_needed(self, audio_path):
         """
         Attempts to convert audio using ffmpeg if available.
@@ -437,8 +485,7 @@ class GeminiService:
             parsed_json = None
             for attempt in range(2):
                 try:
-                    response = self.client.models.generate_content(
-                        model=self.model_name,
+                    response = self._call_with_retry(
                         contents=[audio_part, prompt_text],
                         config=types.GenerateContentConfig(
                             system_instruction=SHIKSHA_SYSTEM_INSTRUCTION,
@@ -570,8 +617,7 @@ Output ONLY valid JSON:
 
         for attempt in range(2):
             try:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
+                response = self._call_with_retry(
                     contents=[audio_part, transcribe_prompt],
                     config=types.GenerateContentConfig(
                         temperature=0.1,
@@ -650,8 +696,7 @@ Output ONLY valid JSON:
 
         for attempt in range(2):
             try:
-                response = self.client.models.generate_content(
-                    model=self.model_name,
+                response = self._call_with_retry(
                     contents=contents,
                     config=types.GenerateContentConfig(
                         temperature=0.2,
@@ -722,8 +767,7 @@ Output ONLY valid JSON:
 
             audio_part = types.Part.from_bytes(data=audio_bytes, mime_type=mime_type)
 
-            response = self.client.models.generate_content(
-                model=self.model_name,
+            response = self._call_with_retry(
                 contents=[audio_part, recheck_prompt],
                 config=types.GenerateContentConfig(
                     system_instruction=SHIKSHA_SYSTEM_INSTRUCTION,
