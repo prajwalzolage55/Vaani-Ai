@@ -412,7 +412,6 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         closeModal();
-        closeJudgeModal();
       }
     });
 
@@ -444,52 +443,8 @@
       });
     });
 
-    // Judge Pitch Modal wiring
-    initJudgeModal();
-
     // Mini-Quiz wiring
     initQuiz();
-  }
-
-  // Judge Pitch Deck Modal
-  function initJudgeModal() {
-    const judgeModal = document.getElementById("judge-pitch-modal");
-    const openBtns = document.querySelectorAll(".trigger-judge-pitch");
-    const closeBtn = document.getElementById("judge-modal-close");
-    const judgeTabs = document.querySelectorAll(".judge-tab-btn");
-
-    openBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (judgeModal) judgeModal.classList.add("active");
-      });
-    });
-
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closeJudgeModal);
-    }
-
-    if (judgeModal) {
-      judgeModal.addEventListener("click", (e) => {
-        if (e.target === judgeModal) closeJudgeModal();
-      });
-    }
-
-    judgeTabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        judgeTabs.forEach(t => t.classList.remove("active"));
-        document.querySelectorAll(".judge-slide-pane").forEach(p => p.classList.remove("active"));
-        tab.classList.add("active");
-        const slideId = tab.dataset.slide;
-        const targetSlide = document.getElementById(slideId);
-        if (targetSlide) targetSlide.classList.add("active");
-      });
-    });
-  }
-
-  function closeJudgeModal() {
-    const judgeModal = document.getElementById("judge-pitch-modal");
-    if (judgeModal) judgeModal.classList.remove("active");
   }
 
   // Interactive Mini-Quiz
@@ -549,10 +504,6 @@
     if (sym) {
       const match = VARNAMALA_DATA.find(x => x.symbol === sym);
       if (match) setTimeout(() => openModal(match), 300);
-    }
-    if (params.get("pitch") === "true") {
-      const judgeModal = document.getElementById("judge-pitch-modal");
-      if (judgeModal) setTimeout(() => judgeModal.classList.add("active"), 200);
     }
   });
 

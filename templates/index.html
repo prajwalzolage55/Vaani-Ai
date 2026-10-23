@@ -84,9 +84,6 @@
       <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
       <span>शिक्षा नोट्स (Study Hub)</span>
     </a>
-    <button class="btn btn-judge-pitch btn-lg trigger-judge-pitch" id="hero-btn-pitch">
-      <span>🏆 Judge Pitch Deck</span>
-    </button>
   </div>
 
   <!-- Live Metric Counters / High-Impact Ribbon -->
@@ -163,7 +160,7 @@
       <label for="student-name" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.45rem; color: var(--text-primary);">
         Student Name / Exhibition Badge (छात्र नाम)
       </label>
-      <input type="text" id="student-name" value="Arya Sharma" placeholder="Enter student or judge name" class="form-control" style="font-weight: 600;">
+      <input type="text" id="student-name" value="Arya Sharma" placeholder="Enter student name" class="form-control" style="font-weight: 600;">
     </div>
 
     <!-- Start Practice CTA -->
@@ -832,7 +829,7 @@
         </h3>
         <p style="color: var(--text-secondary); font-size: 0.92rem;">
           These 5 phonetic distinctions are routinely violated by non-native speakers, causing complete semantic corruption. 
-          Judges love this section because it highlights the exact technical problem VaaniAI solves.
+          This highlights the exact technical problem VaaniAI solves.
         </p>
       </div>
 
@@ -1021,7 +1018,7 @@
       Can You Spot the Retroflex (मूर्धन्य) Sound?
     </h3>
     <p style="font-size: 0.92rem; color: var(--text-secondary);">
-      Put yourself in the judge's seat: which letter requires curling the tongue tip backward to the roof of the mouth?
+      Can you determine which letter requires curling the tongue tip backward to the roof of the mouth?
     </p>
   </div>
 
@@ -1096,161 +1093,6 @@
   </div>
 </div>
 
-<!-- ==========================================================================
-     EXECUTIVE JUDGE PITCH DECK MODAL
-     ========================================================================== -->
-<div id="judge-pitch-modal" class="judge-modal-overlay">
-  <div class="judge-modal-card">
-    <div class="judge-modal-header">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-        <div>
-          <span class="pitch-pill gold" style="margin-bottom: 0.35rem;">🏆 Executive Summary & Pitch Deck</span>
-          <h2 class="classical-heading" style="font-size: 1.6rem; margin-bottom: 0.2rem; color: var(--text-primary);">
-            VaaniAI: Indian Knowledge Systems Powered by Gemini
-          </h2>
-          <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
-            Grounding modern speech models in the <em>Śikṣā Vedāṅga</em> to eliminate auto-correction bias.
-          </p>
-        </div>
-        <button class="modal-close-btn" id="judge-modal-close" style="position: static;">
-          <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Navigation Tabs inside Pitch Modal -->
-    <div class="judge-nav-pills">
-      <button class="judge-tab-btn active" data-slide="slide-problem">1. The Problem</button>
-      <button class="judge-tab-btn" data-slide="slide-solution">2. Our IKS Solution</button>
-      <button class="judge-tab-btn" data-slide="slide-tech">3. Tech Architecture</button>
-      <button class="judge-tab-btn" data-slide="slide-diff">4. Key Differentiators</button>
-      <button class="judge-tab-btn" data-slide="slide-script">5. 2-Min Live Pitch Script</button>
-    </div>
-
-    <!-- Body Panes -->
-    <div class="judge-modal-body">
-      <!-- Slide 1 -->
-      <div id="slide-problem" class="judge-slide-pane active">
-        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
-          The Fatal Flaw in Modern Speech AI: Auto-Correction
-        </h3>
-        <div class="judge-box accent-gold">
-          <strong>The Problem:</strong> When a learner says <em>"टकार"</em> instead of <em>"तकार"</em> or drops aspiration in <em>"घट"</em>, speech models like Whisper and Google STT <strong>auto-correct</strong> the audio based on language models, assuming the user simply meant the standard word.
-        </div>
-        <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65;">
-          This renders conventional ASR completely useless for learning authentic Sanskrit, Vedic chanting, or phonetic pronunciation training in Indian languages. 
-          The student never discovers where their tongue actually moved!
-        </p>
-      </div>
-
-      <!-- Slide 2 -->
-      <div id="slide-solution" class="judge-slide-pane">
-        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
-          The IKS Innovation: Deterministic Pāṇinian Engine
-        </h3>
-        <div class="judge-box accent-saffron">
-          <strong>The Breakthrough:</strong> We pair <strong>Google Gemini Live audio extraction</strong> with a <strong>100% Deterministic Pāṇinian rule table</strong> in MongoDB.
-        </div>
-        <ul style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.8; padding-left: 1.25rem;">
-          <li><strong>Step 1:</strong> Gemini listens to raw acoustic speech without auto-correcting to dictionary words.</li>
-          <li><strong>Step 2:</strong> Our engine maps target sound vs heard sound against the 5 Sthānas (Kaṇṭha, Tālu, Mūrdhā, Danta, Oṣṭha) and 4 Prayatnas.</li>
-          <li><strong>Step 3:</strong> The system cites the exact 2500-year-old Pāṇini sūtra (e.g., <em>ऌतुलसानां दन्ताः</em> vs <em>ऋटुरषाणां मूर्धा</em>) and visually highlights the tongue movement error on an interactive SVG.</li>
-        </ul>
-      </div>
-
-      <!-- Slide 3 -->
-      <div id="slide-tech" class="judge-slide-pane">
-        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
-          Full-Stack Resilient Architecture
-        </h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
-          <div class="judge-box" style="margin: 0;">
-            <div style="font-weight: 800; color: var(--brand-primary); margin-bottom: 0.25rem;">AI Engine</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">Google Gemini 2.5 Flash via official Google GenAI Python SDK.</div>
-          </div>
-          <div class="judge-box" style="margin: 0;">
-            <div style="font-weight: 800; color: var(--accent-gold-dark); margin-bottom: 0.25rem;">Backend</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">Python Flask with zero-crash MongoDB store and JSON in-memory fallback.</div>
-          </div>
-          <div class="judge-box" style="margin: 0;">
-            <div style="font-weight: 800; color: var(--status-clean); margin-bottom: 0.25rem;">Frontend</div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary);">Dynamic SVG vocal tract + Web Speech API + Chart.js learning metrics.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 4 -->
-      <div id="slide-diff" class="judge-slide-pane">
-        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
-          Why VaaniAI Wins Against Generic Language Apps
-        </h3>
-        <div class="vibhakti-table-wrap">
-          <table class="vibhakti-table">
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>Duolingo / Babbel</th>
-                <th>Standard STT (Whisper)</th>
-                <th>VaaniAI (Our System)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Speech Feedback</strong></td>
-                <td>Binary Yes/No</td>
-                <td>Text transcription</td>
-                <td><strong style="color:var(--status-clean);">Exact Sthāna & Prayatna Delta</strong></td>
-              </tr>
-              <tr>
-                <td><strong>Auto-Correction</strong></td>
-                <td>High (Hides flaws)</td>
-                <td>High (Guesses intent)</td>
-                <td><strong style="color:var(--status-clean);">Disabled (Raw Acoustic Truth)</strong></td>
-              </tr>
-              <tr>
-                <td><strong>Vocal Tract SVG</strong></td>
-                <td>None</td>
-                <td>None</td>
-                <td><strong style="color:var(--status-clean);">Real-time Anatomical Cross-Section</strong></td>
-              </tr>
-              <tr>
-                <td><strong>IKS Grounding</strong></td>
-                <td>None</td>
-                <td>None</td>
-                <td><strong style="color:var(--status-clean);">Grounded in Pāṇinīya Śikṣā</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Slide 5 -->
-      <div id="slide-script" class="judge-slide-pane">
-        <h3 class="classical-heading" style="font-size: 1.3rem; margin-bottom: 0.75rem;">
-          🎤 2-Minute Live Judge Pitch Script (Exhibition Ready)
-        </h3>
-        <div class="judge-box accent-saffron" style="font-size: 0.92rem; line-height: 1.7; color: var(--text-primary);">
-          <em>"Respected judges, 90% of students learning Sanskrit confuse dental <strong>त</strong> with retroflex <strong>ट</strong>. 
-          When they use standard AI like Siri or Whisper, the AI auto-corrects their mistake, so they never learn. 
-          We built <strong>VaaniAI</strong> to solve this using our ancient <strong>Indian Knowledge System (Pāṇinīya Śikṣā)</strong>. 
-          Watch this: when the user speaks, Gemini extracts the raw acoustic phonemes. Instead of hallucinating, our deterministic engine cross-checks the 2500-year-old Pāṇini sūtras. 
-          The interactive cross-section instantly shows that the student curled their tongue to the roof instead of touching their upper teeth! 
-          This makes Sanskrit education mathematically precise, preserving our authentic Vedic pronunciation heritage."</em>
-        </div>
-      </div>
-    </div>
-
-    <div class="judge-modal-footer">
-      <span style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
-        VaaniAI • Indian Knowledge Systems & AI Exhibition Prototype
-      </span>
-      <a href="/practice" class="btn btn-primary btn-sm" style="font-size: 0.88rem;">
-        <span>Launch Live Demo</span>
-        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
 {% endblock %}
 
 {% block scripts %}

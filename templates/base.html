@@ -46,7 +46,7 @@
       <nav>
         <ul class="nav-segmented-capsule" id="nav-links">
           <li class="nav-capsule-item">
-            <a href="{{ url_for('index') }}" class="nav-link {% if request.path == '/' and not request.args.get('pitch') %}active{% endif %}" id="nav-home">
+            <a href="{{ url_for('index') }}" class="nav-link {% if request.path == '/' %}active{% endif %}" id="nav-home">
               <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
               <span>Home</span>
             </a>
@@ -92,22 +92,12 @@
 
       <!-- Right: Action & Status Group -->
       <div class="nav-action-cluster">
-        <button class="btn-judge-nav trigger-judge-pitch" title="Open Judge Presentation Deck">
-          <span>🏆</span>
-          <span>Pitch to Judges</span>
-        </button>
-
         {% if demo_mode %}
-        <span class="badge-demo" id="demo-mode-badge" title="Running in deterministic Demo Mode for reliable stage exhibition">
+        <span class="badge-demo" id="demo-mode-badge" title="Running in deterministic Demo Mode">
           <svg class="ui-icon ui-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
           </svg>
           <span>Demo</span>
-        </span>
-        {% else %}
-        <span class="badge-status-live" title="Connected to Google Gemini Live API">
-          <span class="pulse-dot"></span>
-          <span>Gemini Live</span>
         </span>
         {% endif %}
 
@@ -177,15 +167,6 @@
         });
       }
 
-      // If clicked "Pitch to Judges" from other pages, redirect to home with pitch modal open
-      document.querySelectorAll('.trigger-judge-pitch').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          if (!document.getElementById('judge-pitch-modal')) {
-            e.preventDefault();
-            window.location.href = '/?pitch=true';
-          }
-        });
-      });
     })();
   </script>
   {% block scripts %}{% endblock %}
